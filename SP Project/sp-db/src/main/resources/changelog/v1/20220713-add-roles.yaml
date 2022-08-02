@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.1
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: account
+            columns:
+              - column:
+                  name: user_state
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: user_role
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

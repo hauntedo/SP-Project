@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.5
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: file
+            columns:
+              - column:
+                  name: file_type
+                  type: varchar(30)
+                  constraints:
+                    nullable: false

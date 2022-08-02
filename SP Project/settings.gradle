@@ -1,0 +1,5 @@
+rootProject.name = 'sp'
+include 'sp-impl'
+include 'sp-db'
+include 'sp-api'
+

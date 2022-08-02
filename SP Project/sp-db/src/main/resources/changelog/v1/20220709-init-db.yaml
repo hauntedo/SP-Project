@@ -1,0 +1,308 @@
+databaseChangeLog:
+  - changeSet:
+      id: create course table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: course
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_course
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: course_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: course_code
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+                    uniqueConstraintName: uq_course_code
+
+  - changeSet:
+      id: create skill table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: skill
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_skill
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: skill_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create file table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: file
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_file
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: original_file_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: storage_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_size
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content_type
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: create university table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: university
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_university
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: university_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: university_code
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uq_university_code
+
+  - changeSet:
+      id: create academy_group table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: academy_group
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_academy_group
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: academy_group_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create cv table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: cv
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_cv
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: experience_description
+                  type: text
+              - column:
+                  name: portfolio_links
+                  type: text
+              - column:
+                  name: file_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_cv_file
+                    references: file(id)
+  - changeSet:
+      id: create cv_skill table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: cv_skill
+            columns:
+              - column:
+                  name: cv_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_cv_skill_cv
+                    references: cv(id)
+              - column:
+                  name: skill_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_cv_skill_skill
+                    references: skill(id)
+
+  - changeSet:
+      id: create account table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_account
+              - column:
+                  name: create_date
+                  type: timestamp without time zone
+                  defaultValueComputed: now()
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(25)
+                  constraints:
+                    unique: true
+                    nullable: false
+                    uniqueConstraintName: uq_account_phone
+              - column:
+                  name: address
+                  type: text
+              - column:
+                  name: birthdate
+                  type: timestamp without time zone
+              - column:
+                  name: telegram
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: uq_account_telegram
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+                    uniqueConstraintName: uq_account_email
+              - column:
+                  name: hash_password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: academy_group_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_academy_group
+                    references: academy_group(id)
+              - column:
+                  name: university_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_university
+                    references: university(id)
+              - column:
+                  name: cv_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_cv
+                    references: cv(id)
+              - column:
+                  name: photo_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_photo
+                    references: file(id)
+
+  - changeSet:
+      id: create account_course table
+      author: hauntedo
+      changes:
+        - createTable:
+            tableName: account_course
+            columns:
+              - column:
+                  name: account_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_course_account
+                    references: account(id)
+              - column:
+                  name: course_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_account_course_course
+                    references: course(id)
+
+
+
+
+
+

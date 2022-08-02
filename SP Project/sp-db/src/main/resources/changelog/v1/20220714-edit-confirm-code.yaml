@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.3
+      author: hauntedo
+      changes:
+        - dropColumn:
+            tableName: confirm_code
+            columns:
+              - column:
+                  name: confirm_code_state
+
+        - addColumn:
+            tableName: confirm_code
+            columns:
+              - column:
+                  name: confirm_code_state
+                  type: varchar(15)

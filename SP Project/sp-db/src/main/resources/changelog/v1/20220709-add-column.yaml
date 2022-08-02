@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: change course table
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: course
+            columns:
+              - column:
+                  name: description
+                  type: text

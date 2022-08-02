@@ -1,0 +1,38 @@
+apply plugin: 'maven-publish'
+
+bootJar.enabled = false
+jar.enabled = true
+
+ext {
+    validationVersion = '2.0.1.Final'
+    swagger2Version = '3.0.0'
+    swagger2ModelsAndAnotationsVersion = '1.5.21'
+    dataCommonsVersion = '2.4.5'
+    commonsLang3Version = '3.12.0'
+}
+
+dependencies {
+
+    implementation "javax.validation:validation-api:${validationVersion}"
+    implementation "org.springframework.data:spring-data-commons:${dataCommonsVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    // https://mvnrepository.com/artifact/org.openapitools/openapi-generator
+    implementation 'org.openapitools:openapi-generator:3.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.4.Final'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.7.1'
+
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+}

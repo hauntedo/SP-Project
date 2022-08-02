@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.2
+      author: hauntedo
+      changes:
+        - dropNotNullConstraint:
+            tableName: account
+            columnName: hash_password
+        - dropNotNullConstraint:
+            tableName: account
+            columnName: phone
+        - dropUniqueConstraint:
+            tableName: account
+            uniqueColumns: phone
+            constraintName: uq_account_phone
+        - dropUniqueConstraint:
+            tableName: account
+            uniqueColumns: telegram
+            constraintName: uq_account_telegram

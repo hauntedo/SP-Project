@@ -1,0 +1,60 @@
+databaseChangeLog:
+
+  - include:
+      file: 20220709-init-db.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220711-edit-db.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220709-add-column.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220711-edit-file.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220712-edit-file.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220713-add-roles.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220714-edit-user.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220714-edit-confirm-code.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220714-user-birthdate.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220715-add-column-file.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220715-edit-user-cv.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220717-add-column-course.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220718-add-column-practice-work.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 20220719-add-states.yaml
+      relativeToChangelogFile: true
+
+
+

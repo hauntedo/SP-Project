@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.1.0
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: university
+            columns:
+              - column:
+                  name: university_state
+                  type: varchar(30)

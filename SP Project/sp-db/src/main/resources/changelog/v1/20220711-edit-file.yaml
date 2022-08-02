@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: change file table
+      author: hauntedo
+      changes:
+        - dropColumn:
+            tableName: file
+            columns:
+              - column:
+                  name: storage_id
+
+              - column:
+                  name: file_size
+
+        - addColumn:
+            tableName: file
+            columns:
+              - column:
+                 name: file_data
+                 type: blob

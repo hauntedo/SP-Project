@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.9
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: practice_work
+            columns:
+              - column:
+                  name: title
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: general_info
+                  type: text
+              - column:
+                  name: technical_requirement
+                  type: text

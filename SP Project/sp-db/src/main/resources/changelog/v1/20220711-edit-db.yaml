@@ -1,0 +1,175 @@
+databaseChangeLog:
+  - changeSet:
+      - id: edit database
+      - author: hauntedo
+      - changes:
+          - createTable:
+              tableName: account_refresh_token
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_account_refresh_token
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: expiry_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                    constraints:
+                      nullable: false
+
+                - column:
+                    name: account_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_account_refresh_token
+                      references: account(id)
+          - createTable:
+              tableName: user_avatar
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_user_avatar
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: file_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_user_avatar_file
+                      references: file(id)
+                - column:
+                    name: account_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_user_avatar_account
+                      references: account(id)
+          - createTable:
+              tableName: practice_work
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_practice_work
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: course_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_practice_work_course
+          - createTable:
+              tableName: practice_work_file
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_practice_work_file
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: practice_work_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_practice_work
+                      references: practice_work(id)
+                - column:
+                    name: file_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_practice_work_file
+                      references: file(id)
+          - createTable:
+              tableName: confirm_code
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_confirm_code
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: confirm_code
+                    type: uuid
+                    constraints:
+                      nullable: false
+                - column:
+                    name: confirm_code_state
+                    type: bool
+                - column:
+                    name: account_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_confirm_code_account
+                      references: account(id)
+          - createTable:
+              tableName: university_year
+              columns:
+                - column:
+                    name: id
+                    type: uuid
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: pk_university_year
+                - column:
+                    name: create_date
+                    type: timestamp without time zone
+                    defaultValueComputed: now()
+                - column:
+                    name: university_year
+                    type: int
+                    constraints:
+                      nullable: false
+                - column:
+                    name: university_id
+                    type: uuid
+                    constraints:
+                      foreignKeyName: fk_university_year_university
+                      references: university(id)
+          - addColumn:
+              tableName: academy_group
+              columns:
+                column:
+                  name: university_year_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_academy_group_university_year
+                    references: university_year(id)
+
+          - addColumn:
+              tableName: course
+              columns:
+                column:
+                  name: university_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_course_university
+                    references: university(id)

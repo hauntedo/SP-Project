@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.6
+      author: hauntedo
+      changes:
+        - dropColumn:
+            tableName: account
+            columns:
+              - column:
+                  name: cv_id
+              - column:
+                  name: university_id
+              - column:
+                  name: photo_id
+
+  - changeSet:
+      id: 1.0.7
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: cv
+            columns:
+              - column:
+                  name: account_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: fk_cv_account
+                    references: account(id)

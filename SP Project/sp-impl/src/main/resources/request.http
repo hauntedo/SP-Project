@@ -1,0 +1,58 @@
+POST localhost/api/users/login
+Content-Type: application/json
+
+{
+  "email" : "rustem.karimov.2002@gmail.com",
+  "password" : "qwerty007"
+}
+
+###
+
+PUT localhost/api/users/5807eba1-47ea-44f3-89aa-e5b4197b4031
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJST0xFIjoiVVNFUiIsInN1YiI6InJ1c3RlbS5rYXJpbW92LjIwMDJAZ21haWwuY29tIiwiZXhwIjoxNjU3ODM1NzE2LCJpYXQiOjE2NTc4MzIxMTZ9.hkP0eagxiHTYWEHIx4lWj02eaTH2TioweI2SqENblEHOZt4IfF90reEbJeemR2CQuasqIFaFhcqmDDgnn_1vog
+Content-Type: application/json
+
+{
+  "first_name": " ",
+  "last_name": "Doe",
+  "phone": "88005335",
+  "birthdate": "02-01-01",
+  "address": " ",
+  "telegram": "john doe"
+}
+
+###
+
+POST localhost/api/users/login
+Content-Type: application/json
+
+{
+  "email" : "rustem.karimov.2002@gmail.com",
+  "password" : "qwerty007"
+}
+
+###
+
+PUT localhost/api/users/5807eba1-47ea-44f3-89aa-e5b4197b4031
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJST0xFIjoiVVNFUiIsInN1YiI6InJ1c3RlbS5rYXJpbW92LjIwMDJAZ21haWwuY29tIiwiZXhwIjoxNjU3ODM2MTE2LCJpYXQiOjE2NTc4MzI1MTZ9.4niSA8p5DYZ-QR9178qSksLD7FbgBDt3oWLK9Y1bM3M_ucxweYLvxXdzEwppTuUrRXC3f4A31IicVtzQc4OVLA
+Content-Type: application/json
+
+{
+  "first_name": "Kar",
+  "last_name": "Doe",
+  "phone": "+79196359123",
+  "birthdate": "2002-01-01",
+  "address": "Ka",
+  "telegram": "johndoe"
+}
+
+###
+
+POST localhost/api/users/signup
+Content-Type: application/json
+
+{
+  "first_name" : "Rustem",
+  "last_name" : "Karimov",
+  "email" : "rustem.karimov@gmail.com"
+}

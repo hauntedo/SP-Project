@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0
+      author: hauntedo
+      changes:
+        - addColumn:
+            tableName: file
+            columns:
+              - column:
+                  name: object_id
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_size
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - dropColumn:
+            tableName: file
+            columns:
+              - column:
+                  name: file_data
+
+
